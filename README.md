@@ -38,7 +38,7 @@ IRC란 Internet Relay Chat의 약자로 실시간 인터넷 채팅 프로토콜�
 ### 수행한 역할 - jiyun
 
 - TCP 기반 에코 서버 만들기
-- kqueue 기반 이벤트 폴링을 통해 리스닝 및 클라이언트 소켓의 I/O 이벤트 감지 기능 구현
+- kqueue 기반 이벤트 폴링을 통해 리스닝 및 클라이언트 소켓의 I/O 이벤트 처리 기능 구현
 - RFC 기반 IRC 프로토콜 분석 및 채팅 기능 구현
   - JOIN, QUIT, PART, INVITE, KICK
 - 테스트
