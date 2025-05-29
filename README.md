@@ -46,7 +46,7 @@ IRC란 Internet Relay Chat의 약자로 실시간 인터넷 채팅 프로토콜�
 # 목표
 
 - Non-relay의 소규모 서버 : 다중 서버간 릴레이를 배제한, 단일 서버 기능만 제공하도록 구현
-- I/O multiplexing : 단일 스레드/프로세스 상에서 다중 클라이언트에 대한 poller 기반의 비동기 처리를 지원
+- I/O multiplexing : 단일 스레드/프로세스 상에서 다중 클라이언트에 대한 poller 기반의 소켓 I/O 감지
     - BSD 기반 시스템(우리의 경우 macOS)에서 활용 가능한, 보다 고성능인 kqueue를 poller로 사용
 - IRC 프로토콜의 주요 명령어 기능 제공
     - connection registration : `PASS`, `NICK`, `USER`, `QUIT`
@@ -100,8 +100,8 @@ IRC란 Internet Relay Chat의 약자로 실시간 인터넷 채팅 프로토콜�
     - sequnece diagram을 작성하여, 구현 목표를 분명하게 했던 것이 많은 도움이 되었던 것 같다.
 - I/O Multiplexing 애 대한 이해
     - 기본적인 에코 서버 구현에서 출발하여 왜 I/O Multiplexing이 필요한지를 이해할 수 있었다.
-        - I/O Multiplexing은 단일 프로세스에서 여러 입출력을 동시에 관리 하는 기술이다.
-        - 소켓은 논블로킹으로 설정하고, 그에 대한 작업은 비동기적으로 처리하여 다중 작업을 수행하도록 구현하였다.
+        - I/O Multiplexing은 단일 프로세스에서 여러 입출력을 동시에(Concurrency) 관리 하는 기술이다.
+        - 소켓은 논블로킹으로 설정하고, 다중 작업을 수행하도록 구현하였다.
         - 어떤 **순서로** 받는지 → 동기, 비동기처리의 차이
         - **기다렸다** 받는지 → 블로킹, 논블로킹의 차리
     - 사용할 poller를(kqueue) 선정한 이후, 관련 API 사용방법을 정리해야 했다.
